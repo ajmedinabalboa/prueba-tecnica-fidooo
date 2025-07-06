@@ -60,7 +60,7 @@ class ChatService {
       
       const authHeader = await this.getAuthHeader();
       
-      const response = await fetch(`${API_BASE_URL}/api/gpt/message`, {
+      const response = await fetch('/api/gpt/message', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ class ChatService {
     try {
       const authHeader = await this.getAuthHeader();
       
-      const response = await fetch(`${API_BASE_URL}/api/gpt/health`, {
+      const response = await fetch('/api/gpt/health', {
         method: 'POST',
         headers: {
           'Authorization': authHeader,
