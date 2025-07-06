@@ -80,14 +80,14 @@ export default async function handler(
   } catch (error) {
     console.error('❌ Error:', error);
     
-    if (error.response?.status === 401) {
+    if (typeof error === 'object' && error !== null && 'response' in error && (error as any).response?.status === 401) {
       return res.status(500).json({ 
         message: 'Error de autenticación con OpenAI' 
       });
     }
 
     return res.status(500).json({
-      text: `Lo siento, no pude procesar tu mensaje. Error: ${error.message}`,
+      text: `Lo siento, no pude procesar tu mensaje. Error: ${typeof error === 'object' && error !== null && 'message' in error ? (error as any).message : String(error)}`,
       timestamp: new Date(),
     });
   }

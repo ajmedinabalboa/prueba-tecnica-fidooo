@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { GptModule } from './gpt/gpt.module';
 
@@ -11,12 +13,14 @@ import { GptModule } from './gpt/gpt.module';
     }),
     ThrottlerModule.forRoot([
       {
-        ttl: 60000, // 1 minuto
-        limit: 30, // 30 requests por minuto
+        ttl: 60000,
+        limit: 10,
       },
     ]),
     AuthModule,
     GptModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

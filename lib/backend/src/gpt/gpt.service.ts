@@ -173,6 +173,9 @@ export class GptService {
         max_tokens: 5,
       });
 
+      if (!testCompletion || !testCompletion.choices || testCompletion.choices.length === 0) {
+        throw new Error('No se recibió una respuesta válida de OpenAI');
+      }
       this.logger.log('✅ Health check exitoso con OpenAI');
       return {
         status: 'ok',

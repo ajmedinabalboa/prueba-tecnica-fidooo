@@ -1,4 +1,4 @@
-import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from '@nestjs/common';
+import { Injectable, ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
@@ -7,7 +7,7 @@ export class FirebaseAuthGuard extends AuthGuard('firebase-jwt') {
     return super.canActivate(context);
   }
 
-  handleRequest(err: any, user: any, info: any) {
+  handleRequest(err: any, user: any) {
     if (err || !user) {
       throw err || new UnauthorizedException('Token de autenticación inválido');
     }

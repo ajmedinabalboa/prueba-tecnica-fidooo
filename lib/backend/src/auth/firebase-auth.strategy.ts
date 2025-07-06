@@ -30,6 +30,7 @@ export class FirebaseAuthStrategy extends PassportStrategy(Strategy) {
       }
       return firebaseUser;
     } catch (err) {
+      console.error('Error validating Firebase token:', err);
       throw new UnauthorizedException();
     }
   }

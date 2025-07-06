@@ -2,14 +2,12 @@
 import React from 'react';
 import {
   Paper,
-  Typography,
-  Chip,
+  Typography,  
   Box,
   Badge,
 } from '@mui/material';
 import {
-  Circle as OnlineIcon,
-  Chat as ChatIcon,
+  Circle as OnlineIcon,  
 } from '@mui/icons-material';
 
 interface ChatHeaderProps {
@@ -19,8 +17,7 @@ interface ChatHeaderProps {
 }
 
 const ChatHeader: React.FC<ChatHeaderProps> = ({ 
-  userEmail, 
-  connectedUsers, 
+  userEmail,   
   isOnline 
 }) => {
   return (
